@@ -5,7 +5,11 @@ void banner(){
     puts("------- 안녕하세요 자료구조 STACK 정리 프로그램 입니다. ---------");
     puts("1. 스택이란 ? ");
     puts("2. 스택의 원리 ");
-    puts("4. exit");
+    puts("3. exit");
+
+}
+
+void stack_information(){
 
 }
 
@@ -16,10 +20,12 @@ int main(){
         banner();
         scanf("%d",&choice);
 
-        if(choice == 4){
+        if(choice == 1){
+            stack_information();
+        }
+        else if(choice == 4){
             break;
         }
-
 
     }while(1);
 
