@@ -4,12 +4,30 @@
 
 void banner(){
 
-    puts("------- 안녕하세요 자료구조 STACK 정리 프로그램 입니다. ---------");
+    system("clear");
+    puts("------- 안녕하세요 자료구조 STACK 정리 프로그램 입니다. ---------\n");
     puts("1. 스택이란 ? ");
     puts("2. 스택의 기능");
     puts("3. 스택의 원리 ");
     puts("4. exit");
 
+}
+
+void empty_information(){
+
+    puts("empty는 단순하게 stack이 비어 있는지 아닌지 판단하여 스택이 비어 있으면 1, 아니면 0 을 보여주는 기능 입니다.");
+
+    puts(" -------------- ");
+    puts(" |      8     |  <- top");
+    puts(" -------------- ");
+    puts(" |      1     | ");
+    puts(" -------------- ");
+    puts(" |      6     | ");
+    puts(" --------------            --------------\n");
+
+    puts("   return 0                return 1 ( 비어있는 stack )\n\n");
+
+    puts("다음과 같이 스택이 비어 있을 경우 1을 보여주고, 아닌 경우는 0을 보여줍니다.");
 }
 
 void size_information(){
@@ -100,6 +118,10 @@ bool check(){
 
 void stack_function(){
 
+    int choice = 0;
+
+    system("clear");
+
     puts("stack 에는 주로 다음과 같이 5개의 기능을 제공합니다.\n\n");
     puts("----- push, pop, top(peek), size, empty -----\n\n");
     puts("먼저 push 입니다.\n");
@@ -132,10 +154,63 @@ void stack_function(){
     puts("다음은 size에 대해서 알어 봅시다.");
     size_information();
 
+    if(check()){
+        return ;
+    }
+
+    system("clear");
+
+    puts("마지막으로 empty에 대해서 알어 봅시다.");
+    empty_information();
+
+    puts("이어서 할려면 enter를 입력하세요.");
+    system("read");
+    system("clear");
+
+    puts("지금까지 stack의 기능들에 대해 알어 보았습니다. 다시 보실려면 해당 옵션을 선택해 주세요.");
+
+    while(1){
+        puts("1. push ");
+        puts("2. pop ");
+        puts("3. top(peek)");
+        puts("4. size");
+        puts("5. empty");
+        puts("6. exit");
+
+        printf("input : ");
+        scanf("%d",&choice);
+
+        system("clear");
+        if(choice == 1){
+            push_information();
+        }
+        else if(choice == 2){
+            pop_information();
+        }
+        else if(choice == 3){
+            top_information();
+        }
+        else if(choice == 4){
+            size_information();
+        }
+        else if(choice == 5){
+            empty_information();
+        }
+        else{
+            break;
+        }
+
+        puts("이어서 할려면 enter를 입력하세요.");
+        system("read");
+        system("clear");
+
+    }
+
 }
 
 void stack_information(){
 
+    system("clear");
     puts("------- stack 이란? ------\n");
     puts("한 쪽 끝에서만 데이터를 넣고 뺄 수 있는 후입선출 LIFO(Last In First Out) 형식의 자료 구조로");
     puts("가장 최근에 삽입한 데이터가 가장 먼저 제거되는 자료구조 입니다.");
@@ -156,11 +231,16 @@ void stack_information(){
 
     puts("다음과 같이 top 이 맨 위를 가리키는 것을 확인 할 수 있고, pop을 하게 되면 가장 맨 위에 있는 자료가 빠져 나가는 것을 확인 할 수 있습니다.\n\n");
 
+    puts("이어서 할려면 enter를 입력하세요.");
+    system("read");
+    system("clear");
+    
 }
 
 int main(){
 
     int choice = 0;
+
     do{
         banner();
         printf("input : ");
@@ -172,7 +252,10 @@ int main(){
         else if(choice == 2){
             stack_function();
         }
-        else if(choice == 4){
+        // else if(choice == 3){
+            
+        // }
+        else{
             puts("---- 종료 합니다. ----");
             break;
         }
