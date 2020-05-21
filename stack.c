@@ -1,22 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <unistd.h>
-
-#define ANSI_COLOR_BLUE "\x1b[34m"
 
 void banner(){
 
     puts("------- 안녕하세요 자료구조 STACK 정리 프로그램 입니다. ---------");
     puts("1. 스택이란 ? ");
-    puts("2. 스택의 원리 ");
-    puts("3. exit");
+    puts("2. 스택의 기능");
+    puts("3. 스택의 원리 ");
+    puts("4. exit");
+
+}
+
+void size_information(){
+
+    puts("size 는 말 그대로 stack 의 데이터의 갯수를 보여주는 기능입니다.\n");
+
+    puts("                           --------------");
+    puts("                           |      9     |  <- top");
+    puts(" --------------            --------------");
+    puts(" |      8     |  <- top    |      4     |");
+    puts(" --------------            --------------            --------------");
+    puts(" |      1     |            |      8     |            |      4     |  <- top");
+    puts(" --------------            --------------            --------------");
+    puts(" |      6     |            |      6     |            |      1     |");
+    puts(" --------------            --------------            --------------");
+    puts("     size : 3                  size : 4                  size : 2\n");
+
+    puts("다음과 같이 각 stack의 데이터의 갯수를 보여주는 간단한 기능 입니다.");
+
+}
+
+void top_information(){
+
+    puts("top(peek)은 stack의 맨 위에 있는 데이터를 보여주는 기능입니다.\n");
+
+    puts(" --------------");
+    puts(" |      8     |  <- top");
+    puts(" --------------            --------------");
+    puts(" |      5     |            |      5     |  <- top");
+    puts(" --------------            --------------            --------------");
+    puts(" |      3     |            |      3     |            |      3     |  <- top");
+    puts(" --------------            --------------            --------------");
+    puts("   output : 8 !               output : 5 !               output : 3 !\n\n");
+    
+    puts("top(peek)은 pop 과 달리 데이터를 삭제하는 것이 아닌 데이터를 출력해주는 기능입니다.");
+    puts("다음과 같이 각각 stack에 있는 맨 위의 데이터들을 출력하는 것을 확인 할 수 있습니다.");
 
 }
 
 void pop_information(){
 
-    puts("pop 는 stack의 맨 위에 있는 데이터를 뽑아네는 기능입니다.");
+    puts("pop 는 stack의 맨 위에 있는 데이터를 뽑아네는 기능입니다.\n");
 
  
     puts(" --------------");
@@ -35,7 +70,7 @@ void pop_information(){
 
 void push_information(){
 
-    puts("push 는 stack의 맨 위에다가 새롭게 데이터를 삽입하는 명령 입니다.\n\n");
+    puts("push 는 stack의 맨 위에다가 새롭게 데이터를 삽입하는 명령 입니다.\n");
 
     puts("                                                    --------------");
     puts("                                                    |      8     |  <- top");
@@ -63,6 +98,42 @@ bool check(){
     return true;
 }
 
+void stack_function(){
+
+    puts("stack 에는 주로 다음과 같이 5개의 기능을 제공합니다.\n\n");
+    puts("----- push, pop, top(peek), size, empty -----\n\n");
+    puts("먼저 push 입니다.\n");
+    push_information();
+
+    if(check()){
+        return ;
+    }
+
+    system("clear");
+
+    puts("다음은 push에 이어서 pop에 대해서 알어보도록 하겠습니다.\n");
+    pop_information();
+
+    if(check()){
+        return ;
+    }
+
+    system("clear");
+
+    puts("이제 top(peek)에 대해서 알어 봅시다.");
+    top_information();
+
+    if(check()){
+        return ;
+    }
+
+    system("clear");
+
+    puts("다음은 size에 대해서 알어 봅시다.");
+    size_information();
+
+}
+
 void stack_information(){
 
     puts("------- stack 이란? ------\n");
@@ -85,26 +156,6 @@ void stack_information(){
 
     puts("다음과 같이 top 이 맨 위를 가리키는 것을 확인 할 수 있고, pop을 하게 되면 가장 맨 위에 있는 자료가 빠져 나가는 것을 확인 할 수 있습니다.\n\n");
 
-    if(check()){
-        return ;
-    }
-
-    system("clear");
-
-    puts("stack 에는 주로 다음과 같이 5개의 기능을 제공합니다.\n\n");
-    puts("----- push, pop, top(peak), size, empty -----\n\n");
-    puts("먼저 push 입니다.\n");
-    push_information();
-
-    if(check()){
-        return ;
-    }
-
-    system("clear");
-
-    puts("다음은 push에 이어서 pop에 대해서 알어보도록 하겠습니다.\n");
-    pop_information();
-
 }
 
 int main(){
@@ -118,7 +169,10 @@ int main(){
         if(choice == 1){
             stack_information();
         }
-        else if(choice == 3){
+        else if(choice == 2){
+            stack_function();
+        }
+        else if(choice == 4){
             puts("---- 종료 합니다. ----");
             break;
         }
