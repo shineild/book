@@ -8,14 +8,127 @@ void banner(){
     puts("------- 안녕하세요 자료구조 STACK 정리 프로그램 입니다. ---------\n");
     puts("1. 스택이란 ? ");
     puts("2. 스택의 기능");
-    puts("3. 스택의 원리 ");
+    puts("3. 스택 실습 ");
     puts("4. exit");
+}
+
+void state(int * arr ,int size){
+
+    puts("---- 현재 stack 상황 ----\n");
+
+    puts(" --------------");
+
+    for(int i=size-1;i>=0;i--){
+        printf(" |      %d     | \n",arr[i]);
+        puts(" -------------- ");
+    }
+
+
+    puts("");
+}
+
+void option(){
+
+    puts("");
+    puts("1. push ");
+    puts("2. pop ");
+    puts("3. top(peek)");
+    puts("4. size");
+    puts("5. empty");
+    puts("6. exit");
+
+}
+
+int stack_empty(int size){
+    if(size == 0){
+        return 1;
+    }
+    return 0;
+}
+
+int stack_top(int * stack, int size){
+    if(stack_empty(size)){
+        printf("top를 할 수 없습니다. 현재 stack에 들어가 있는 데이터가 없습니다.");
+        return -1 ;
+    }
+    return stack[size-1];
+}
+
+void stack_pop(int * size){
+    if(stack_empty(*size)){
+        puts("pop을 할 수 없습니다. 현재 stack에 들어가 있는 데이터가 없습니다.");
+        puts("이어서 할려면 enter를 입력하세요.");
+        system("read");
+        return ;
+    }
+    *size -= 1;
+}
+
+void stack_push(int * stack, int *size){
+    int input_data = 0;
+    printf("push data 입력 : ");
+    scanf("%d",&input_data);
+    if(*size == 10){
+        puts("!! stack이 가득찼습니다 !!");
+        puts("이어서 할려면 enter를 입력하세요.");
+        system("read");
+        return ;
+    }
+    stack[*size] = input_data;
+
+    *size += 1;
+}
+
+void training(){
+
+    system("clear");
+    int stack[10] = {0,};
+    int size = 0, choice = 0;
+
+    puts("이번에는 본격적으로 직접 stack에 데이터를 집어넣고 뽑아 보면서 이해를 해봅시다.\n");
+
+    if(size == 0){
+        puts("");
+    }
+
+    while(1){
+        system("clear");
+        state(stack, size);
+        option();
+        printf("input : ");
+        scanf("%d",&choice);
+
+        if(choice == 1){
+            stack_push(stack,&size);
+        }
+        else if(choice == 2){
+            stack_pop(&size);
+        }
+        else if(choice == 3){
+            printf("top : %d\n",stack_top(stack, size));
+            puts("이어서 할려면 enter를 입력하세요.");
+            system("read");
+        }
+        else if(choice == 4){
+            printf("size : %d\n",size);
+            puts("이어서 할려면 enter를 입력하세요.");
+            system("read");
+        }
+        else if(choice == 5){
+            printf("empty : %d\n",stack_empty(size));
+            puts("이어서 할려면 enter를 입력하세요.");
+            system("read");
+        }
+        else{
+            break;
+        }
+    }
 
 }
 
 void empty_information(){
 
-    puts("empty는 단순하게 stack이 비어 있는지 아닌지 판단하여 스택이 비어 있으면 1, 아니면 0 을 보여주는 기능 입니다.");
+    puts("empty는 단순하게 stack이 비어 있는지 아닌지 판단하여 스택이 비어 있으면 1, 아니면 0 을 보여주는 기능 입니다.\n");
 
     puts(" -------------- ");
     puts(" |      8     |  <- top");
@@ -170,12 +283,8 @@ void stack_function(){
     puts("지금까지 stack의 기능들에 대해 알어 보았습니다. 다시 보실려면 해당 옵션을 선택해 주세요.");
 
     while(1){
-        puts("1. push ");
-        puts("2. pop ");
-        puts("3. top(peek)");
-        puts("4. size");
-        puts("5. empty");
-        puts("6. exit");
+
+        option();
 
         printf("input : ");
         scanf("%d",&choice);
@@ -252,9 +361,9 @@ int main(){
         else if(choice == 2){
             stack_function();
         }
-        // else if(choice == 3){
-            
-        // }
+        else if(choice == 3){
+            training();
+        }
         else{
             puts("---- 종료 합니다. ----");
             break;
