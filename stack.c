@@ -85,7 +85,6 @@ void training(){
     int stack[10] = {0,};
     int size = 0, choice = 0;
 
-    puts("이번에는 본격적으로 직접 stack에 데이터를 집어넣고 뽑아 보면서 이해를 해봅시다.\n");
 
     if(size == 0){
         puts("");
@@ -93,6 +92,7 @@ void training(){
 
     while(1){
         system("clear");
+        puts("stack에 직접 데이터를 넣고 뽑아 봅시다.\n");
         state(stack, size);
         option();
         printf("input : ");
